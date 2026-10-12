@@ -1,183 +1,191 @@
-[![DOI](https://img.shields.io/badge/DOI-10.1016/j.geoai.2025.100038-blue)](https://doi.org/10.1016/j.geoai.2025.100038)
+# CPT-3D - Digital Twin for CPT Soil Reconstruction
 
-# CPTSuperLearn
+CPT-3D is an experimental three-dimensional digital twin for visualizing and
+reconstructing subsurface conditions from Cone Penetration Test (CPT) profiles.
+The latest game lets a simple CPT vehicle move over an X-Y surface while the
+subsurface volume is displayed interactively with PyVista.
 
-## Objective
+The repository contains two independent paths:
 
-CPTSuperLearn is a Deep Reinforcement Learning framework designed to improve subsurface in-situ testing.
-The objective of this project is to train and evaluate a Deep Q-Learning (DQL) agent to optimize the placement
-of in-situ testing (e.g. Cone Penetration Test) points in a given environment.
-The agent learns to minimize the Root Mean Square Error (RMSE) between the true and predicted data
-while considering the cost of sampling.
+- `game3d/`: the latest standalone 3D game and the recommended entry point.
+- `CPTSuperLearn/` and `game/`: the original 2D Deep Reinforcement Learning
+  implementation, preserved without modification.
 
-The description of the methodology and results can be found in this
-[paper](https://www.sciencedirect.com/science/article/pii/S3050483X25000371).
+No DRL training is required to run the 3D game.
 
-![DRL](static/DRL.png)
+## 3D game modes
 
+### 1. Synthetic 3D Mode
+
+- Generates a reproducible `16 x 16 x 8` hidden soil volume.
+- Contains three soil layers with smooth X-Y boundaries.
+- IC varies along X, Y, and Z.
+- Moving the vehicle and pressing Space samples a complete IC depth profile.
+- Horizontal IDW reconstructs the volume using sampled profiles only.
+- Ground truth and prediction are displayed side-by-side.
+- Volumetric RMSE and MAE are updated after sampling.
+
+### 2. Real CPT Data Mode
+
+- Uses the S1, S2, and S3 profiles extracted from the NGC 2025 sondir PDF.
+- Visualizes `qc` in `kg/cm2`; it is never mixed with synthetic IC.
+- Converts geographic coordinates to local east/north metres relative to S1.
+- Uses a consistent vertical reduced level: `RL = surface elevation - depth`.
+- Red lines represent the three measured CPT locations.
+- Pressing Space away from S1-S3 previews an IDW prediction only; it does not
+  create a fictitious measurement.
+- RMSE is unavailable because a measured 3D ground-truth volume does not exist.
+- The UI warns that interpolation uncertainty is high with only three CPTs.
+
+Real project data is intentionally excluded from Git. Place an authorized copy
+of the PDF locally at:
+
+```text
+data/real_cpt/SONDIR SONDIR NGC 2025(1).pdf
+```
+
+## Requirements
+
+- macOS
+- Python 3.11
+- A local graphical session for the interactive PyVista window
 
 ## Installation
 
-### Pre-requisites
+Clone the repository and enter it:
 
-- Python 3.11
-- The data files for training and validation are available on [Zenodo](https://zenodo.org/records/13143431/files/data.zip).
-- If you want to use the data from the schemaGAN, you need to download the [schemaGAN model](https://zenodo.org/records/13143431/files/schemaGAN.h5).
-- To automatically download the data files and the schemaGAN model, run the following script:
-    ```sh
-    python download_data.py
-    ```
-
-### Install the package
-To install the package we recommend the use of a [Python virtual environment](https://docs.python.org/3/library/venv.html).
-The virtual environment should be installed and activated before the installation of CPTSuperLearn.
-
-To install the package, you can use either of the following methods:
-
-#### Using pip
-You can install the package directly using pip:
-
-```sh
-pip install git+https://github.com/brunozc/cpt_super_learn
+```bash
+git clone https://github.com/daffabur/CPT-3D.git
+cd CPT-3D
 ```
 
-#### Cloning the repository
+Create and activate an isolated environment. With Conda:
 
-You can also install the package by cloning the repository:
-```sh
-git clone https://github.com/brunozc/CPTSuperLearn.git
-cd CPTSuperLearn
+```bash
+conda create -n cpt3d python=3.11 -y
+conda activate cpt3d
 ```
 
-After cloning the repository, you can install the package using pip:
-```sh
-pip install .
+Or with the standard library:
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
 ```
 
-or alternatively by installing the requirements file:
-```sh
-pip install -r requirements.txt
+Install only the dependencies needed by the 3D game:
+
+```bash
+python -m pip install -r game3d/requirements-game3d.txt
 ```
 
+## Running the latest game
 
-## Usage
+Start the mode selector:
 
-### Configuring file
-CPTSuperLearn uses a configuration file to set the parameters for the DQL agent.
-This allows you to customize the training and evaluation process, and allows for a clear
-reproducible setup.
-The configuration file is in YAML format and has the following structure.
-
-```yaml
-# CPTSuperLearn Configuration
-
-# General settings
-seed: 14
-data:
-  train_folder: "data/train"
-  validation_folder: "data/vali"
-
-# Environment settings
-environment:
-  actions: [25, 50, 100, 150]  # Action values in pixels
-  max_nb_cpts: 20             # Maximum number of CPTs
-  weight_reward_cpt: 0.6      # Weight for CPT cost in reward function
-  image_width: 512            # Width of the environment image
-  max_first_step: 1           # Maximum number of pixels for the the first step
-  interpolation_method: "SchemaGAN"  # Options: "SchemaGAN", "InverseDistance"
-  interpolation_method_params: "schemaGAN/schemaGAN.h5"  # if SchemGAN (path to model) if InverseDistance (number of neighbors)
-
-# Agent settings
-agent:
-  state_size: 6               # Size of the state space
-  learning_rate: 0.0001       # Learning rate for optimizer
-  gamma: 0.99                 # Discount factor
-  epsilon_start: 0.95         # Starting exploration rate
-  epsilon_end: 0.05           # Final exploration rate
-  epsilon_decay: 0.99996      # Decay rate for epsilon
-  memory_size: 10000          # Size of replay memory
-  batch_size: 64              # Batch size for training
-  nb_steps_update: 100        # Steps between target network updates
-  hidden_layers: [32, 64, 64, 32]  # Neural network architecture
-  use_batch_norm: true        # Use batch normalization
-  activation: "relu"          # Activation function
-
-# Training settings
-training:
-  nb_episodes: 100000         # Number of training episodes
-  make_plots: false           # Generate plots during training
-  output_folder: "results"    # Folder to save results
-  log_interval: 10            # Episode interval for logging
-
-# Validation settings
-validation:
-  make_plots: false           # Generate plots during validation
-  output_folder: "results/validation"  # Folder to save validation results
+```bash
+python -m game3d.main
 ```
 
+Choose `1` for Synthetic 3D Mode or `2` for Real CPT Data Mode.
 
-### Training the Model
+You can also start a mode directly:
 
-To train the DQL agent, run the [`train_model`](train_model.py) script:
-
-```sh
-python train_model.py --config config.yaml
+```bash
+python -m game3d.main --mode synthetic
+python -m game3d.main --mode real
 ```
 
-This will train the model using the configuration file config.yaml.
+Controls:
 
-### Evaluating the Model
+| Control | Action |
+|---|---|
+| `W/A/S/D` | Move on the X-Y surface |
+| Arrow keys | Move on the X-Y surface |
+| `Space` | Sample synthetic profile or preview real-data prediction |
+| Mouse drag | Rotate camera |
+| Scroll | Zoom |
+| `Control+C` in Terminal | Stop the game |
 
-To evaluate the trained model, run the [`validate_model`](validate_model.py) script:
+Close the PyVista window before starting another game instance.
 
-```sh
-python validate_model.py --config config.yaml
+## Preparing the real CPT data
+
+After placing the authorized PDF in `data/real_cpt/`, extract and validate it:
+
+```bash
+python -m game3d.main --extract-only
 ```
 
-This will evaluate the model using the configuration file config.yaml.
+This creates local, Git-ignored files:
 
-
-### Plotting Results
-To visualize the validation results, run the [`plot_validation`](plot_validation.py) script:
-
-```sh
-python plot_validation.py
+```text
+data/real_cpt/sondir_ngc_2025.csv
+data/real_cpt/extraction_report.json
 ```
 
-### Project Structure
+The extractor verifies the three tabular pages, depth interval, row count, and
+units before writing the normalized CSV.
 
-```plaintext
-CPTSuperLearn
-├── CPTSuperLearn
-│   ├── __init__.py
-│   ├── agent.py
-│   ├── environment.py
-│   ├── interpolator.py
-│   ├── metric.py
-│   ├── runner.py
-│   └── utils.py
-├── game
-│   ├── __init__.py
-│   └── cpt_game.py
-├── train_model.py
-├── validate_model.py
-├── plot_validation.py
-├── run_game.py
-├── download_data.py
-└── setup.cfg
+## Tests
+
+Run the 3D tests:
+
+```bash
+python -m pip install pytest
+python -m pytest -q game3d/test_game3d.py
 ```
 
-* CPTSuperLearn: Contains the core modules for the environment, agent, interpolators, metrics, runner and utilities.
-* game: Contains the implementation of the CPT game environment.
-* train_model.py: Script to train the DQL agent.
-* validate_model.py: Script to evaluate the trained model.
-* plot_validation.py: Script to plot the validation results.
-* run_game.py: Script to run the CPT game.
-* download_data.py: Script to download the data files and schemaGAN model.
+Real-data extraction tests are skipped when the authorized PDF/CSV is not
+present in the local `data/real_cpt/` directory.
 
+Run a headless PyVista geometry smoke test:
 
-## Citation
-To cite this work, please use the following reference:
+```bash
+python -m game3d.main --mode synthetic --off-screen
+python -m game3d.main --mode real --off-screen
+```
+
+Run all repository tests:
+
+```bash
+python -m pytest -q
+```
+
+## Project structure
+
+```text
+CPT-3D/
+├── game3d/
+│   ├── main.py
+│   ├── visualization.py
+│   ├── environment3d.py
+│   ├── interpolator3d.py
+│   ├── data_loader.py
+│   ├── synthetic_generator.py
+│   └── requirements-game3d.txt
+├── prototype_3d/          # Standalone reconstruction proof of concept
+├── CPTSuperLearn/         # Original 2D DRL package
+├── game/                  # Original 2D game
+└── test/
+```
+
+## Limitations
+
+- Real mode currently has only three CPT locations, so the interpolated volume
+  must not be treated as verified ground truth.
+- The displayed uncertainty is a nearest-CPT distance proxy, not a calibrated
+  geostatistical confidence interval.
+- Horizontal IDW smooths between profiles and does not explicitly model
+  geological discontinuities or anisotropy.
+- The real-data surface elevation is preserved, which is why S1 appears above
+  S2 and S3.
+
+## Original project and citation
+
+The 2D DRL implementation is based on
+[brunozc/cpt_super_learn](https://github.com/brunozc/cpt_super_learn) and the
+following publication:
 
 ```bibtex
 @article{DRL_2025,
@@ -192,5 +200,5 @@ To cite this work, please use the following reference:
 ```
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+This repository retains the existing MIT license. See [LICENSE](LICENSE).
