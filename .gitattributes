@@ -1,0 +1,2 @@
+data/synthetic3d_v2/schemagan_v3_24k_csv/**/*.csv filter=lfs diff=lfs merge=lfs -text
+data/synthetic3d_v2/schemagan_v3_24k_csv/sidecars/** filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,23 @@
+{
+  "pilot": false,
+  "new_volumes": 24000,
+  "validated_skips": 0,
+  "export_seconds": 1466.638065125,
+  "volumes": 24000,
+  "split_counts": {
+    "train": 16000,
+    "validation_id": 4000,
+    "test_id": 1000,
+    "test_family": 1000,
+    "test_geometry_parameter": 1000,
+    "test_response_parameter": 1000
+  },
+  "voxel_rows": 101880000,
+  "csv_bytes": 20858544532,
+  "sidecar_bytes": 699206594,
+  "round_trip_exact_all_3d_arrays": true,
+  "checksums_verified": 48003,
+  "source_manifest_sha256_unchanged": true,
+  "validation_seconds": 774.2244959169998,
+  "total_seconds": 2270.9934620000004
+}
