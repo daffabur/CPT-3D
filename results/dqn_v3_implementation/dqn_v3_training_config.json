@@ -1,0 +1,28 @@
+{
+  "schema_version": "dqn-v3-pilot-config-1",
+  "status": "prepared_not_executed",
+  "dataset_root": "data/synthetic3d_v2/schemagan_v3_24k",
+  "development_splits": ["train", "validation_id"],
+  "schemagan_checkpoint": "results/schemagan3d_v3_training_continuation/mse_continuation/best.pt",
+  "schemagan_config": "results/schemagan3d_v3_training_continuation/mse_continuation_config.json",
+  "train_volume_count": 32,
+  "validation_volume_count": 12,
+  "episode_count": 64,
+  "validation_every_episodes": 16,
+  "initial_cpt_counts": [1, 2, 3, 5, 8, 12, 20],
+  "episode_horizon": 1,
+  "seed": 14,
+  "validation_seed": 1000014,
+  "agent": {
+    "learning_rate": 0.0001,
+    "gamma": 0.99,
+    "replay_capacity": 512,
+    "batch_size": 8,
+    "target_update_steps": 50,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.05,
+    "epsilon_decay_episodes": 200,
+    "seed": 14,
+    "hidden_width": 64
+  }
+}

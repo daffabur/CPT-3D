@@ -1,0 +1,11 @@
+{
+  "schema_version": "schemagan-v3-observation-policy-1",
+  "stored_profile_counts_source": "v3_dataset_config.json:stored_cpt_counts",
+  "train_simulated_profile_counts": [1, 2, 3, 5, 8, 12, 20],
+  "train_site_seed_rule": "saved site_seed plus 1000003; nested prefixes; distinct from stored observation",
+  "evaluation_profile_counts": [1, 2, 3, 5, 8, 12, 20],
+  "evaluation_site_seed_source": "frozen plan evaluation_site_seed",
+  "selection_uses": ["grid", "valid_mask", "seed"],
+  "truth_use": "Ic is read only at selected CPT voxels when constructing simulated observations",
+  "split_rule": "all observation patterns remain attached to the source realization and split"
+}

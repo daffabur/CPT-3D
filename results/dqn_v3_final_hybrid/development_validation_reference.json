@@ -1,0 +1,78 @@
+{
+  "split": "validation_id",
+  "volume_count": 300,
+  "basis": "recombined existing scaled checkpoint validation records; no new inference",
+  "source_csv_sha256": "e033801c9c63d6347beccd1bb0e095df262543be5667d76ca8f44e52cafe07c9",
+  "source_common_mask": "union of after-action observed masks for DQN, Uniform, Random; at CPT 12/20 it excludes the DQN action even though Hybrid routes to Uniform, so numeric RMSE is not strictly comparable to final 3-policy common mask",
+  "overall_mean_rmse_after": {
+    "hybrid": 0.13867647780548958,
+    "uniform": 0.14006934534580934,
+    "random": 0.14135365276819184
+  },
+  "overall_hybrid_minus_uniform": -0.0013928675403197532,
+  "by_cpt": {
+    "1": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.1663122821599245,
+        "uniform": 0.1704295039176941,
+        "random": 0.1667707549780607
+      },
+      "hybrid_minus_uniform": -0.004117221757769585
+    },
+    "2": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.1570984929551681,
+        "uniform": 0.16005855090916157,
+        "random": 0.15920778147876263
+      },
+      "hybrid_minus_uniform": -0.0029600579539934796
+    },
+    "3": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.15103517989317575,
+        "uniform": 0.15312748099366824,
+        "random": 0.15417880192399025
+      },
+      "hybrid_minus_uniform": -0.0020923011004924776
+    },
+    "5": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.1409105575333039,
+        "uniform": 0.1419624526798725,
+        "random": 0.14369718668361506
+      },
+      "hybrid_minus_uniform": -0.0010518951465686161
+    },
+    "8": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.1297862216581901,
+        "uniform": 0.12931481848160425,
+        "random": 0.1328206967562437
+      },
+      "hybrid_minus_uniform": 0.0004714031765858332
+    },
+    "12": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.11861454956233501,
+        "uniform": 0.11861454956233501,
+        "random": 0.12232529756923517
+      },
+      "hybrid_minus_uniform": 0.0
+    },
+    "20": {
+      "n": 300,
+      "mean_rmse_after": {
+        "hybrid": 0.10697806087632974,
+        "uniform": 0.10697806087632974,
+        "random": 0.11047504998743535
+      },
+      "hybrid_minus_uniform": 0.0
+    }
+  }
+}

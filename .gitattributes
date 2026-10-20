@@ -1,2 +1,8 @@
 data/synthetic3d_v2/schemagan_v3_24k_csv/**/*.csv filter=lfs diff=lfs merge=lfs -text
 data/synthetic3d_v2/schemagan_v3_24k_csv/sidecars/** filter=lfs diff=lfs merge=lfs -text
+results/dqn_v3_scaled_pilot_2000e/run/best.pt filter=lfs diff=lfs merge=lfs -text
+data/synthetic3d_v2/schemagan_v3_24k/manifest.json filter=lfs diff=lfs merge=lfs -text
+results/dqn_v3_final_hybrid/test_id_per_case.csv filter=lfs diff=lfs merge=lfs -text
+results/dqn_v3_final_hybrid/test_family_per_case.csv filter=lfs diff=lfs merge=lfs -text
+results/dqn_v3_final_hybrid/test_geometry_parameter_per_case.csv filter=lfs diff=lfs merge=lfs -text
+results/dqn_v3_final_hybrid/test_response_parameter_per_case.csv filter=lfs diff=lfs merge=lfs -text

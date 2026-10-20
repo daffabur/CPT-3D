@@ -1,0 +1,11 @@
+{
+  "schema_version": "schemagan-v3-24k-train-normalization-1",
+  "plan_sha256": "ff2884e0370e9597cb3afa3f8c0b613f19670835fc96ff2dc26cdebf0990d663",
+  "source_split": "train",
+  "source_volume_count": 16000,
+  "source_train_ids_sha256": "4dc78b78f4b1fbe1ef8e1a749e080aef214c96a7d51a262d4f22517a7bb16c78",
+  "valid_voxel_count": 67925184,
+  "mean": 2.314278231778639,
+  "std": 0.27927494076233944,
+  "method": "valid-voxel population moments; no validation/test fitting"
+}

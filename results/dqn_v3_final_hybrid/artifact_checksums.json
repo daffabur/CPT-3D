@@ -1,0 +1,20 @@
+{
+  "protocol_sha256": "527ac6485f12152faa13c4131d07a3a2f3fcb3d24a65e96feab4e92d6637fb97",
+  "files": {
+    "DQN_V3_FINAL_HYBRID_REPORT.md": "0d052fc850cb030483ce0a218519f55e563b37b6cfbb82e8d4e9c92e8bf5bada",
+    "coreml_inference_contract.md": "0e5677e7e98e2dfccefb81a1616977225a6542b3efa74f4d5b12f5c49443ace0",
+    "development_validation_reference.json": "e8e841b07598cdd03ebdbead2c1b20ed22135308b70e8e1501cdc84b21f9204b",
+    "final_evaluation_by_cpt.json": "018c9db69457bb8099da6c35203c3f084b3981fc4e8d53a11794069ea612f829",
+    "final_evaluation_by_split.json": "7298732cc333f671571ff4851458c3f436fc98c2e3957caef9c4df81cc5ebde7",
+    "final_paired_confidence_intervals.json": "30da6945774f2d1574bfb0132b84c8d2450447b54da09caf378c3a56a5a94d22",
+    "final_policy_comparison.csv": "9189a16a1e7d2f8d3bf2985258356299fd94184e8c3b43400de538370b02c3b9",
+    "frozen_final_evaluation_protocol.json": "527ac6485f12152faa13c4131d07a3a2f3fcb3d24a65e96feab4e92d6637fb97",
+    "frozen_hybrid_policy.json": "6b53044b2283470bd8e9e210fa742b24598464eeccd19039202c5e84e82e6e7b",
+    "input_integrity.json": "9038010640915540101c26d0c74cefed348c3bf381df874f53cc1f3029217c12",
+    "test_family_per_case.csv": "b4a87102f6f1fe0de4abbb2e3f8098ebd22df3a2e0a08b186fd69422a860b583",
+    "test_geometry_parameter_per_case.csv": "2b9f05889d71c28e769bc99b2800497f0fb44abbc1c6ac6b693e4129826eb331",
+    "test_id_per_case.csv": "1bf80e8192ecc7f58df8f1ac6835141571e6b2834a932c28ba3d8f56a21708f1",
+    "test_response_parameter_per_case.csv": "1221ed1817440456f462dd17ef7046b22aa819083035289a1dd022d46285153b",
+    "test_results.json": "459105af95b76d786b5bd18ef0d581a9c540ac385da1559b958c86566ea5e557"
+  }
+}

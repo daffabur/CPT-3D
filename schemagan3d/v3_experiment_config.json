@@ -1,0 +1,21 @@
+{
+  "schema_version": "schemagan-v3-preparation-1",
+  "mode": "dry_run_only",
+  "dataset_root": "data/synthetic3d_v2/schemagan_v3_prep_small",
+  "train_split": "train",
+  "validation_split": "validation_id",
+  "base_channels": 4,
+  "batch_size": 2,
+  "reconstruction_weight": 100.0,
+  "torch_seed": 19,
+  "batch_seed": 20261019,
+  "group_shape_and_spacing": true,
+  "evaluation": {
+    "seed": 20261019,
+    "profile_counts": [1, 2, 3, 5, 8, 12, 20],
+    "primary_metrics": ["hidden_valid_ic_rmse", "hidden_valid_ic_mae"],
+    "secondary_metrics": ["full_valid_ic_rmse"],
+    "baseline": "physical_xy_idw_observed_profiles_only",
+    "strata": ["geological_family", "material_group_offline", "depth"]
+  }
+}

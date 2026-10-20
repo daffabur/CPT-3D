@@ -1,0 +1,63 @@
+{
+  "schema_version": "dqn-v3-frozen-final-evaluation-1",
+  "dataset": {
+    "path": "data/synthetic3d_v2/schemagan_v3_24k",
+    "manifest_sha256": "2d7b378199c5c21ddf449fde99b87838b12188af62c4116779787293bb21d563",
+    "expected_counts": {
+      "train": 16000,
+      "validation_id": 4000,
+      "test_id": 1000,
+      "test_family": 1000,
+      "test_geometry_parameter": 1000,
+      "test_response_parameter": 1000
+    }
+  },
+  "checkpoints": {
+    "schemagan": {
+      "path": "results/schemagan3d_v3_training_continuation/mse_continuation/best.pt",
+      "sha256": "5694bb7b43efd7054a99fac8b74dadc5d74ebe6d291f42a8393b57fe9da52b64",
+      "config": "results/schemagan3d_v3_training_continuation/mse_continuation_config.json"
+    },
+    "dqn": {
+      "path": "results/dqn_v3_scaled_pilot_2000e/run/best.pt",
+      "sha256": "687539d5ad2606b198f2aadfaa6761bc9d9968ec8ce1fd2c915350413530345a"
+    }
+  },
+  "feature_schema": {
+    "path": "results/dqn_v3_implementation/dqn_v3_feature_schema.json",
+    "sha256": "440d9e750d609c32daecd013af9b86cc4c92845f387a4854ec0637a81bbccb07"
+  },
+  "hybrid_policy_sha256": "6b53044b2283470bd8e9e210fa742b24598464eeccd19039202c5e84e82e6e7b",
+  "test_splits": [
+    "test_id",
+    "test_family",
+    "test_geometry_parameter",
+    "test_response_parameter"
+  ],
+  "initial_cpt_counts": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    12,
+    20
+  ],
+  "policies": [
+    "hybrid",
+    "uniform",
+    "random"
+  ],
+  "sampling": {
+    "seed": 1000014,
+    "initial": "schemagan3d.v3_eval_protocol.nested_sites(grid, entry.evaluation_site_seed + seed, valid, count); nested across counts",
+    "random_policy": "SHA256(seed|realization_id|count|random) first 8 bytes big endian -> numpy.default_rng"
+  },
+  "candidate_validity": "valid.any(z) and not observed.any(z) and access mask if supplied; lexicographic x,y; access mask all true for this synthetic evaluation",
+  "evaluation_mask": "valid & ~(observed_after_hybrid | observed_after_uniform | observed_after_random); identical common hidden-valid voxels for each policy; exclude all selected CPT profiles",
+  "metrics": "physical Ic per-case RMSE before/after, improvement=before-after; arithmetic mean of per-case values; valid, duplicate, no-candidate rates",
+  "confidence_interval": "paired delta Hybrid minus comparator, first average seven CPT deltas per realization ID, then 2000 volume-level percentile bootstrap resamples; seed 1000014; for CPT/grid/family breakdown resample realization IDs in stratum",
+  "development_reference": "existing validation_id 300-volume records; different masks may limit numeric comparability",
+  "stop_criteria": "Stop and mark FINAL_EVALUATION_FAILED on missing split, split overlap, empty common mask, identity mismatch, nonfinite metric, illegal/duplicate action, or failed test. Do not replace split or tune routing.",
+  "test_independence_limit": "test splits previously used for SchemaGAN evaluation; independent only relative to DQN model selection"
+}

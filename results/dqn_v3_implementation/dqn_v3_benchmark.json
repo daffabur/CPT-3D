@@ -1,0 +1,58 @@
+{
+  "schema_version": "dqn-v3-light-benchmark-1",
+  "device": "cpu",
+  "repeat_count": 3,
+  "note": "Short end-to-end inference on 3 real train volumes; no DQN training or full-pilot throughput claim.",
+  "by_grid": {
+    "g24": {
+      "shape": [
+        24,
+        24,
+        12
+      ],
+      "reset_seconds": 0.030897832999471575,
+      "recommend_seconds_first": 0.029883540992159396,
+      "simulation_step_seconds": 0.029872250015614554,
+      "recommend_seconds_repeats": [
+        0.03030608399421908,
+        0.02982116601197049,
+        0.029822209005942568
+      ],
+      "recommend_seconds_median": 0.029822209005942568
+    },
+    "g12": {
+      "shape": [
+        12,
+        12,
+        12
+      ],
+      "reset_seconds": 0.006989333021920174,
+      "recommend_seconds_first": 0.006992791983066127,
+      "simulation_step_seconds": 0.006957375007914379,
+      "recommend_seconds_repeats": [
+        0.006920166022609919,
+        0.0069481249956879765,
+        0.0069412919983733445
+      ],
+      "recommend_seconds_median": 0.0069412919983733445
+    },
+    "g16": {
+      "shape": [
+        16,
+        16,
+        16
+      ],
+      "reset_seconds": 0.012281208008062094,
+      "recommend_seconds_first": 0.012414374999934807,
+      "simulation_step_seconds": 0.012415792007232085,
+      "recommend_seconds_repeats": [
+        0.012494499998865649,
+        0.01254666701424867,
+        0.012468333006836474
+      ],
+      "recommend_seconds_median": 0.012494499998865649
+    }
+  },
+  "peak_process_rss_raw": 849936384,
+  "peak_process_rss_unit": "bytes on macOS; process peak includes Python/PyTorch imports and dataset cache"
+}

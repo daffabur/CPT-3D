@@ -1,0 +1,23 @@
+{
+  "schema_version": "schemagan-v3-dataset-pilot-1",
+  "generator_version": "v2-prototype-3",
+  "seed_namespace": 20261019,
+  "output_root": "data/synthetic3d_v2/schemagan_v3_experiment_pilot",
+  "full_target_counts": {"train": 2000, "validation_id": 400, "test_id": 400, "test_family": 200, "test_geometry_parameter": 200, "test_response_parameter": 200},
+  "pilot_counts": {"train": 9, "validation_id": 9, "test_id": 9, "test_family": 6, "test_geometry_parameter": 6, "test_response_parameter": 6},
+  "id_families": ["horizontal", "inclined", "undulating"],
+  "family_holdout": "lens",
+  "geometry_holdout": {"family": "inclined", "tag": "high_geometry", "slope_wave_multiplier": 1.6},
+  "response_holdout": {"family": "horizontal", "tag": "high_response", "log_qc_sd": 0.32, "log_fr_sd": 0.30, "log_cross_covariance": -0.012},
+  "grid_catalog": [
+    {"name": "g12", "shape": [12, 12, 12], "spacing_m": [2.0, 2.0, 1.0], "origin_xy_m": [0.0, 0.0]},
+    {"name": "g16", "shape": [16, 16, 16], "spacing_m": [2.0, 2.0, 1.0], "origin_xy_m": [0.0, 0.0]},
+    {"name": "g24", "shape": [24, 24, 12], "spacing_m": [1.0, 1.0, 1.0], "origin_xy_m": [0.0, 0.0]}
+  ],
+  "stored_cpt_counts": [1, 2, 3, 5, 8, 12, 20],
+  "evaluation_cpt_counts": [1, 2, 3, 5, 8, 12, 20],
+  "evaluation_site_seed_namespace": 830000,
+  "n_background_layers": 3,
+  "pilot_limit": 60,
+  "write_policy": "pilot_only_no_overwrite_atomic_per_volume"
+}

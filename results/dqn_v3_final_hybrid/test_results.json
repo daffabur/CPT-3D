@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "automated_tests": {
+    "command": "cpt/bin/python -m pytest -q -p no:cacheprovider --disable-warnings dqn3d schemagan3d/test_v3_adapter.py schemagan3d/test_v3_idw_guided.py schemagan3d/test_v3_training_monitoring.py",
+    "passed": 91,
+    "warnings": 14
+  },
+  "protocol_sha256": "527ac6485f12152faa13c4131d07a3a2f3fcb3d24a65e96feab4e92d6637fb97",
+  "input_integrity": {
+    "checked_input_files": 12000,
+    "mismatches": [],
+    "status": "passed"
+  },
+  "evaluation_csv_audit": {
+    "test_id": {
+      "rows": 21000,
+      "paired_cases": 7000,
+      "volumes": 1000,
+      "sha256": "1bf80e8192ecc7f58df8f1ac6835141571e6b2834a932c28ba3d8f56a21708f1"
+    },
+    "test_family": {
+      "rows": 21000,
+      "paired_cases": 7000,
+      "volumes": 1000,
+      "sha256": "b4a87102f6f1fe0de4abbb2e3f8098ebd22df3a2e0a08b186fd69422a860b583"
+    },
+    "test_geometry_parameter": {
+      "rows": 21000,
+      "paired_cases": 7000,
+      "volumes": 1000,
+      "sha256": "2b9f05889d71c28e769bc99b2800497f0fb44abbc1c6ac6b693e4129826eb331"
+    },
+    "test_response_parameter": {
+      "rows": 21000,
+      "paired_cases": 7000,
+      "volumes": 1000,
+      "sha256": "1221ed1817440456f462dd17ef7046b22aa819083035289a1dd022d46285153b"
+    }
+  },
+  "audit_failures": []
+}

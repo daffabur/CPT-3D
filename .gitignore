@@ -16,3 +16,32 @@ build/
 .pytest_cache/
 .DS_Store
 /prototype_3d/output/
+/synthetic3d/visualizations/
+
+# Curated V3 reproducibility files. Keep bulk arrays and historical runs local.
+!/results/
+/results/*
+!/results/dqn_v3_final_hybrid/
+!/results/dqn_v3_implementation/
+!/results/schemagan3d_v3_training_continuation/
+/results/schemagan3d_v3_training_continuation/*
+!/results/schemagan3d_v3_training_continuation/mse_continuation_config.json
+!/results/schemagan3d_v3_training_continuation/SCHEMAGAN_V3_TRAINING_CONTINUATION_REPORT.md
+!/results/schemagan3d_v3_training_continuation/mse_continuation/
+/results/schemagan3d_v3_training_continuation/mse_continuation/*
+!/results/schemagan3d_v3_training_continuation/mse_continuation/best.pt
+!/results/dqn_v3_scaled_pilot_2000e/
+/results/dqn_v3_scaled_pilot_2000e/*
+!/results/dqn_v3_scaled_pilot_2000e/scaled_config.json
+!/results/dqn_v3_scaled_pilot_2000e/DQN_V3_SCALED_PILOT_REPORT.md
+!/results/dqn_v3_high_cpt_targeted/
+/results/dqn_v3_high_cpt_targeted/*
+!/results/dqn_v3_high_cpt_targeted/recommended_policy_selection.json
+!/results/dqn_v3_high_cpt_targeted/DQN_V3_HIGH_CPT_TARGETED_REPORT.md
+
+# The original 24K binary dataset remains local pending an explicit distribution plan.
+!/data/synthetic3d_v2/
+/data/synthetic3d_v2/*
+!/data/synthetic3d_v2/schemagan_v3_24k/
+/data/synthetic3d_v2/schemagan_v3_24k/*
+!/data/synthetic3d_v2/schemagan_v3_24k/provenance.json

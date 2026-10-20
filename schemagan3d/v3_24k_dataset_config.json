@@ -1,0 +1,30 @@
+{
+  "schema_version": "schemagan-v3-24k-config-1",
+  "plan_schema_version": "schemagan-v3-24k-plan-1",
+  "generator_version": "v2-prototype-3",
+  "seed_namespace": "schemagan-v3-24k-independent-realizations-v1",
+  "output_root": "data/synthetic3d_v2/schemagan_v3_24k",
+  "target_counts": {
+    "train": 16000,
+    "validation_id": 4000,
+    "test_id": 1000,
+    "test_family": 1000,
+    "test_geometry_parameter": 1000,
+    "test_response_parameter": 1000
+  },
+  "id_families": ["horizontal", "inclined", "undulating"],
+  "family_holdout": "lens",
+  "geometry_holdout": {"family": "inclined", "tag": "high_geometry", "slope_wave_multiplier": 1.6},
+  "response_holdout": {"family": "horizontal", "tag": "high_response", "log_qc_sd": 0.32, "log_fr_sd": 0.30, "log_cross_covariance": -0.012},
+  "grid_catalog": [
+    {"name": "g12", "shape": [12, 12, 12], "spacing_m": [2.0, 2.0, 1.0], "origin_xy_m": [0.0, 0.0]},
+    {"name": "g16", "shape": [16, 16, 16], "spacing_m": [2.0, 2.0, 1.0], "origin_xy_m": [0.0, 0.0]},
+    {"name": "g24", "shape": [24, 24, 12], "spacing_m": [1.0, 1.0, 1.0], "origin_xy_m": [0.0, 0.0]}
+  ],
+  "stored_cpt_counts": [1, 2, 3, 5, 8, 12, 20],
+  "evaluation_cpt_counts": [1, 2, 3, 5, 8, 12, 20],
+  "training_observation_policy": "v3_observation_policy.json; separate nested derivatives of the same volume, never extra independent realizations",
+  "n_background_layers": 3,
+  "realizations_per_lineage_group": 1,
+  "write_policy": "plan_only; production writer disabled pending explicit approval and scale validation"
+}
