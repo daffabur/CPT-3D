@@ -1,0 +1,27 @@
+{
+  "schema_version": "dqn-v3-frozen-hybrid-1",
+  "basis": "validation_id only; recommended_policy_selection.json",
+  "routes": [
+    {
+      "unique_observed_xy_cpt_counts": [
+        1,
+        2,
+        3,
+        5,
+        8
+      ],
+      "policy": "scaled_dqn"
+    },
+    {
+      "unique_observed_xy_cpt_counts": [
+        12,
+        20
+      ],
+      "policy": "uniform_spatial_coverage"
+    }
+  ],
+  "unsupported_counts": "unsupported_cpt_count",
+  "no_candidate_status": "no_candidate",
+  "tie_break": "lexicographic x,y",
+  "ground_truth_at_inference": false
+}

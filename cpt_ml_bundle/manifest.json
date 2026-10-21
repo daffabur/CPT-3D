@@ -1,0 +1,146 @@
+{
+  "schema_version": "cpt-ml-bundle-1",
+  "source_checkpoint_sha256": {
+    "schemagan": "5694bb7b43efd7054a99fac8b74dadc5d74ebe6d291f42a8393b57fe9da52b64",
+    "dqn": "687539d5ad2606b198f2aadfaa6761bc9d9968ec8ce1fd2c915350413530345a"
+  },
+  "inference_checkpoint_sha256": {
+    "schemagan": "e39232d92f31614d8bce81ca7b939720e65e4b1866c0482bd1bfc411cdf670ea",
+    "dqn": "8869fc8bff0cfe2447112b9259708fa35f7c3795cca4fb5655d2c02916449599"
+  },
+  "tensor_fingerprint_sha256": {
+    "schemagan": "937b400b533cff2ced8e73b12c127696dd91d31082fcbe7b00c502a460f016de",
+    "dqn": "49692de371a39411480ace73949a830b923b6b488d095649f01078802dfd6eb4"
+  },
+  "source_config_sha256": {
+    "normalization.json": "6d64139ad0850af679d39ccf2046466771af0e060c86ca56b085d7c29b8d9b9a",
+    "feature_schema.json": "440d9e750d609c32daecd013af9b86cc4c92845f387a4854ec0637a81bbccb07",
+    "hybrid_policy.json": "6b53044b2283470bd8e9e210fa742b24598464eeccd19039202c5e84e82e6e7b"
+  },
+  "files": {
+    "README.md": {
+      "sha256": "b90f95f7ac6d6fbd905f8fa6b20e3cdcafd2f2e4c78efc2817242201db5b52cb",
+      "bytes": 3999
+    },
+    "configs/feature_schema.json": {
+      "sha256": "440d9e750d609c32daecd013af9b86cc4c92845f387a4854ec0637a81bbccb07",
+      "bytes": 2180
+    },
+    "configs/hybrid_policy.json": {
+      "sha256": "6b53044b2283470bd8e9e210fa742b24598464eeccd19039202c5e84e82e6e7b",
+      "bytes": 574
+    },
+    "configs/model.json": {
+      "sha256": "dd5daa381250029ea8cd4b40a9d35b51492be17b53d8b7da9c3fd53f78578a9d",
+      "bytes": 245
+    },
+    "configs/normalization.json": {
+      "sha256": "6d64139ad0850af679d39ccf2046466771af0e060c86ca56b085d7c29b8d9b9a",
+      "bytes": 472
+    },
+    "models/dqn_v3.pt": {
+      "sha256": "8869fc8bff0cfe2447112b9259708fa35f7c3795cca4fb5655d2c02916449599",
+      "bytes": 26878
+    },
+    "models/schemagan_v3.pt": {
+      "sha256": "e39232d92f31614d8bce81ca7b939720e65e4b1866c0482bd1bfc411cdf670ea",
+      "bytes": 196814
+    },
+    "pipeline.py": {
+      "sha256": "1d82f7b787292bd2bf3ab56c01a3b367861877059d9225bc20ff3fc0f864d3cc",
+      "bytes": 7424
+    },
+    "runtime/dqn3d/__init__.py": {
+      "sha256": "56f7371a6d103c10b184e3bf5454752acc507f8bc625693d0807eefeeca26481",
+      "bytes": 31
+    },
+    "runtime/dqn3d/v3/__init__.py": {
+      "sha256": "02c1cf3d9fd5ac52a6db3f4f23bb1d6d5a37555a2244a205fe90abefe7642ae3",
+      "bytes": 77
+    },
+    "runtime/dqn3d/v3/baselines.py": {
+      "sha256": "db8831fb453acff3dd4c8136915a4fc9ab57fc366c697fddc7e6b1574f05ea40",
+      "bytes": 1118
+    },
+    "runtime/dqn3d/v3/constants.py": {
+      "sha256": "37e4dd4e9e9c5d85a8b5ef19fbc08d07b9c82fc581e21304eeee5a00c9616a87",
+      "bytes": 69
+    },
+    "runtime/dqn3d/v3/features.py": {
+      "sha256": "98d1de89f1b627eb6312f0a3162bc2c459a6502d4f55aa55db3ab939471dd427",
+      "bytes": 5200
+    },
+    "runtime/dqn3d/v3/hybrid.py": {
+      "sha256": "bf2b638b14ed9c32388a818cf7ef016b220df0ac0a29abbeb213073a7bcba573",
+      "bytes": 2362
+    },
+    "runtime/dqn3d/v3/q_scorer.py": {
+      "sha256": "264598aca16b364038f465f87ffe4ec3bf450985dd0dceb92d292bad97c96517",
+      "bytes": 935
+    },
+    "runtime/schemagan3d/__init__.py": {
+      "sha256": "3b731282a7c694cde74dce32495a9f83528537ec099bbf39bbcf928213443d79",
+      "bytes": 161
+    },
+    "runtime/schemagan3d/models.py": {
+      "sha256": "0ac2abaa5189fa609a2d62ef9c9a9d48b9b811511f134522978a4cf37437e697",
+      "bytes": 2719
+    },
+    "runtime/schemagan3d/v3_adapter.py": {
+      "sha256": "09d45a7dbf139a8343575dec20f195fc13fa38069153df2ff91b7e59679d8712",
+      "bytes": 10469
+    },
+    "runtime/schemagan3d/v3_eval_protocol.py": {
+      "sha256": "28f52eada68c75ac9c06e522820dd8c0aaef3ed219fddfc6fdab36f926690867",
+      "bytes": 2997
+    },
+    "runtime/schemagan3d/v3_idw_guided.py": {
+      "sha256": "1634251814cd78061bb84869065d9ba0bdeec847dc6b519d809f71a0404cabf9",
+      "bytes": 4686
+    },
+    "runtime/schemagan3d/v3_losses.py": {
+      "sha256": "4365b6565aac2203225096fe4339cd61e81dc526337b58707c4ee96d9c1b3819",
+      "bytes": 2457
+    },
+    "runtime/synthetic3d/__init__.py": {
+      "sha256": "7bec2e532035abfbed7bceaf21b404946de6c8632ed4f44903a9510f0ec9d1eb",
+      "bytes": 37
+    },
+    "runtime/synthetic3d/v2/__init__.py": {
+      "sha256": "90405ebdcf907fcfdd544f7f1a92c081ad21ee8b7c26d42fb86ae38aaed00d56",
+      "bytes": 165
+    },
+    "runtime/synthetic3d/v2/core.py": {
+      "sha256": "a9b05c744d4e9be3f1a2acde18ba29ee6c4753ca9ef0792551db30f562df509b",
+      "bytes": 19100
+    }
+  },
+  "supported_grid_shapes_xyz": [
+    [
+      12,
+      12,
+      12
+    ],
+    [
+      16,
+      16,
+      16
+    ],
+    [
+      24,
+      24,
+      12
+    ]
+  ],
+  "supported_cpt_counts": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    12,
+    20
+  ],
+  "no_dataset_runtime_dependency": true,
+  "source_code_modifications": "features.py import path only; all feature formulas and neural layer definitions unchanged"
+}

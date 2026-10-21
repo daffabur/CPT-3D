@@ -1,0 +1,66 @@
+{
+  "schema_version": "dqn-v3-candidate-feature-schema-1",
+  "candidate_dimension": 17,
+  "global_dimension": 11,
+  "candidate_names_ordered": [
+    "x_local_fraction",
+    "y_local_fraction",
+    "nearest_cpt_distance_fraction",
+    "local_observed_density_4m",
+    "valid_depth_fraction",
+    "reconstructed_ic_mean_z",
+    "reconstructed_ic_std_z",
+    "depth_bin_0_ic_mean_z",
+    "depth_bin_1_ic_mean_z",
+    "depth_bin_2_ic_mean_z",
+    "depth_bin_3_ic_mean_z",
+    "depth_bin_0_empty",
+    "depth_bin_1_empty",
+    "depth_bin_2_empty",
+    "depth_bin_3_empty",
+    "local_4m_reconstructed_ic_mean_z",
+    "local_4m_valid_fraction"
+  ],
+  "global_names_ordered": [
+    "log_observed_cpt_fraction",
+    "extent_x_over_32m",
+    "extent_y_over_32m",
+    "extent_z_over_16m",
+    "dx_over_2m",
+    "dy_over_2m",
+    "dz_over_2m",
+    "global_reconstructed_ic_mean_z",
+    "global_reconstructed_ic_std_z",
+    "valid_voxel_fraction",
+    "observed_valid_voxel_fraction"
+  ],
+  "candidate_order": "lexicographic x then y",
+  "ic_normalization": {
+    "mean": 2.314278231778639,
+    "std": 0.27927494076233944,
+    "source_split": "train"
+  },
+  "coordinate_normalization": "x/(nx-1), y/(ny-1) in grid local axes, equivalent to normalized physical coordinates after inverse grid rotation; metric distances use Grid.xy_m",
+  "distance_normalization": "nearest CPT distance in physical metres / hypot(nx*dx_m,ny*dy_m); clipped to 1",
+  "local_radius_m": 4.0,
+  "local_density": "observed XY sites / all XY grid sites within 4 m",
+  "depth_bins": "four equal index partitions of normalized Z; mean valid Ic per bin and 1 for empty",
+  "empty_bin_fill": 0.0,
+  "ic_features": "(physical Ic - train mean)/train std; standard deviations / train std",
+  "global_extent_scales_m": [
+    32.0,
+    32.0,
+    16.0
+  ],
+  "global_spacing_scale_m": 2.0,
+  "count_normalization": "log1p(observed CPT count)/log1p(number of XY with any valid depth)",
+  "valid_fraction": "valid voxels / all grid voxels",
+  "observed_fraction": "observed voxels / valid voxels",
+  "forbidden_features": [
+    "hidden truth",
+    "true error",
+    "unit_id",
+    "future CPT",
+    "remaining fixed budget"
+  ]
+}
