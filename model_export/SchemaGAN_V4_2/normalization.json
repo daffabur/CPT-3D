@@ -1,0 +1,7 @@
+{
+  "field": "Ic",
+  "source_split": "train",
+  "mean": 2.7903323310879604,
+  "std": 0.7723778445702414,
+  "method": "pooled_training_voxels"
+}
